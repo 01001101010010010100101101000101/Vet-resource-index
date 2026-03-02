@@ -1,0 +1,182 @@
+HOW TO ADD A NEW RESOURCE TO THE WEBSITE
+(Using Google Sheets — the easy way)
+=========================================
+
+Think of the Google Sheet like a spreadsheet that controls everything on
+the website. Each row you add becomes a new card on the page. You don't
+have to touch any code.
+
+─────────────────────────────────────────
+BEFORE YOU ADD IT: VERIFY THE LINK WORKS
+─────────────────────────────────────────
+
+1. Open the website or organization's page in a new tab.
+2. Make sure the URL in your browser actually goes to what you expect —
+   not a login screen, a 404 error, or a random redirect.
+3. If it's a phone number, double-check it by searching the organization's
+   name + "phone number" to confirm it matches.
+4. Ask yourself: Is this an official source? (government .gov site, well-known
+   nonprofit, military branch, etc.) If it looks sketchy, skip it.
+
+You want every link to be something you'd feel confident handing to a veteran
+who really needs help. If the link is dead or wrong, it does more harm than good.
+
+
+─────────────────────────────────────
+STEP 1 — OPEN YOUR GOOGLE SHEET
+─────────────────────────────────────
+
+Go to your Google Sheet (the one connected to this website).
+You'll see a row of column headers at the top. Those headers are the fields
+that control each card.
+
+
+─────────────────────────────────────
+STEP 2 — ADD A NEW ROW AT THE BOTTOM
+─────────────────────────────────────
+
+Click the first empty cell in the next available row (below all the existing data).
+Fill in each column, one at a time. Here's what each column means:
+
+
+COLUMN: section
+  This decides WHICH section of the website the card goes in.
+  You MUST use one of these exact words (lowercase, with the dash if shown):
+
+    crisis
+    mental-health
+    va-benefits
+    healthcare
+    housing
+    employment
+    education
+    legal
+    state
+    financial
+    community
+
+  Example: If you're adding a job placement nonprofit, type:  employment
+
+
+COLUMN: title
+  The bold heading at the top of the card.
+  Keep it short — around 5 words max.
+  Example:  Hire Heroes USA
+
+
+COLUMN: tag_type
+  A small colored label on the card. Pick one:
+
+    urgent    → red  (crisis lines, emergency services)
+    federal   → dark navy  (VA, government agencies, military branches)
+    nonprofit → green  (charities, veteran service organizations)
+    state     → purple  (state-level programs and agencies)
+
+  Example:  nonprofit
+
+
+COLUMN: description
+  2–3 sentences explaining what this resource does and who it helps.
+  Write it like you're telling a friend — plain language, no jargon.
+  Example:  Free job search help for veterans — resume writing, interview
+            coaching, and connecting you with veteran-friendly employers.
+            Available to veterans and military spouses at no cost.
+
+  TIP: If the description has a comma in it, wrap the whole thing in
+  double quotes in the spreadsheet so it doesn't break the row.
+
+
+COLUMN: phone1_label
+  The label that appears before the phone number, like:
+    Call
+    Call & press 1
+    Text
+    Hotline
+  Leave blank if there's no phone number.
+
+
+COLUMN: phone1_number
+  The actual phone number, like:  1-800-273-8255
+  Or a text number, like:  838255
+  Leave blank if there's no phone number.
+
+
+COLUMN: phone2_label and phone2_number
+  Same as above, but for a second number if the resource has one.
+  (Most resources only need phone1. Leave phone2 blank if not needed.)
+
+
+COLUMN: link1_label
+  The text that will appear on the first link button on the card.
+  Make it a short action phrase — tell the person what clicking it does.
+  Good examples:
+    Apply Online
+    Find a Location Near You
+    Learn About Eligibility
+    Get Free Help
+    Call the Hotline
+  Bad examples:
+    Click Here
+    Website
+    Link
+
+
+COLUMN: link1_url
+  The full web address for that first link.
+  Must start with https://
+  Example:  https://www.hireheroesusa.org/veterans/
+
+
+COLUMN: link2_label and link2_url
+  A second link button, if the resource has another useful page.
+  (Like one link for applying and another for checking eligibility.)
+  Leave blank if one link is enough.
+
+
+COLUMN: link3_label and link3_url
+  A third link button. Most cards only need 1 or 2 links — only use
+  this if there's a third genuinely useful and different destination.
+  Leave blank if not needed.
+
+
+COLUMN: tags
+  Hidden keywords that help the search bar find this card.
+  Just write words separated by spaces — no commas needed.
+  Think about what someone might type to find this resource.
+  Example:  job resume career hiring employment veteran nonprofit
+
+
+─────────────────────────────────────
+STEP 3 — SAVE AND CHECK THE WEBSITE
+─────────────────────────────────────
+
+Google Sheets saves automatically. Wait about 30 seconds, then refresh
+the website. Your new card should appear in the correct section.
+
+If it doesn't show up:
+  - Check that the "section" column matches one of the exact values listed above.
+  - Make sure "title" is not blank.
+  - Make sure the row doesn't have any extra line breaks inside a cell.
+
+
+─────────────────────────────────────
+QUICK EXAMPLE — A COMPLETE ROW
+─────────────────────────────────────
+
+section:       employment
+title:         Hire Heroes USA
+tag_type:      nonprofit
+description:   Free personalized job search help for veterans and military
+               spouses — resume writing, interview coaching, and direct
+               connections to veteran-friendly employers nationwide.
+phone1_label:  (leave blank)
+phone1_number: (leave blank)
+phone2_label:  (leave blank)
+phone2_number: (leave blank)
+link1_label:   Get Free Help — Veterans
+link1_url:     https://www.hireheroesusa.org/veterans/
+link2_label:   Get Free Help — Military Spouses
+link2_url:     https://www.hireheroesusa.org/military-spouses/
+link3_label:   (leave blank)
+link3_url:     (leave blank)
+tags:          job resume interview hiring employment veteran spouse nonprofit

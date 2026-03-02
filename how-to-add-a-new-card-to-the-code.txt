@@ -1,0 +1,191 @@
+HOW TO ADD A NEW CARD DIRECTLY TO THE CODE
+(Without using Google Sheets — editing the HTML file)
+======================================================
+
+Use this method when:
+  - You want the card to ALWAYS show up, even if the Google Sheet
+    connection fails or the page is opened offline.
+  - You're adding something to the built-in fallback resource list
+    that lives inside the index.html file itself.
+
+This is a little more technical than the Google Sheet method, but
+totally doable if you follow these steps carefully.
+
+
+─────────────────────────────────────────
+BEFORE YOU START: BACK UP THE FILE
+─────────────────────────────────────────
+
+Before editing index.html, make a copy of it first. Rename the copy
+something like "index-backup.html" so you can restore it if anything
+goes wrong. Seriously — do this first.
+
+
+─────────────────────────────────────────────────────
+STEP 1 — OPEN index.html IN A TEXT EDITOR
+─────────────────────────────────────────────────────
+
+Open the file "index.html" (in the Vet-resource-index folder) using
+a plain text editor. Good options:
+
+  - VS Code (best choice — free, shows you if something is broken)
+  - Notepad++ (Windows)
+  - TextEdit on Mac (switch to plain text mode first)
+  - The built-in text editor on a Chromebook
+
+Do NOT use Microsoft Word or Google Docs — they add invisible formatting
+that will break the file.
+
+
+─────────────────────────────────────────────────────
+STEP 2 — FIND THE FALLBACK_CSV VARIABLE
+─────────────────────────────────────────────────────
+
+Use Ctrl+F (or Cmd+F on Mac) to search for:
+
+  var FALLBACK_CSV
+
+You'll find a giant wall of text that starts like this:
+
+  var FALLBACK_CSV = 'section,title,tag_type,...\ncrisis,Veterans Crisis Line,...
+
+That long string is the built-in list of all the resources. Each \n
+(backslash + n) is a line break separating one resource from the next.
+
+
+─────────────────────────────────────────────────────
+STEP 3 — SCROLL TO THE END OF FALLBACK_CSV
+─────────────────────────────────────────────────────
+
+The variable ends with a single quote followed by a semicolon:
+
+  ...farming agriculture veteran career rural community';
+
+Find that ending. Your cursor needs to go right before the '; at the end.
+
+
+─────────────────────────────────────────────────────
+STEP 4 — ADD YOUR NEW RESOURCE LINE
+─────────────────────────────────────────────────────
+
+Before the closing '; you're going to add your new resource as one
+continuous line. It will look like this pattern:
+
+  \nsection,title,tag_type,description,phone1_label,phone1_number,phone2_label,phone2_number,link1_label,link1_url,link2_label,link2_url,link3_label,link3_url,tags
+
+That \n at the start is important — it's how the code knows a new
+resource is starting.
+
+For any field you're leaving empty (like if there's no phone number),
+just put nothing between the commas — two commas right next to each other.
+
+IMPORTANT RULE ABOUT APOSTROPHES:
+  Do NOT use apostrophes ( ' ) anywhere in the text you add.
+  This is because the whole FALLBACK_CSV is wrapped in single quotes,
+  and an apostrophe inside will break it.
+
+  Instead, rewrite around it:
+    DON'T write:  veteran's benefits
+    DO write:     veterans benefits
+
+    DON'T write:  it's free
+    DO write:     free of charge
+
+  Also avoid single quotes in any web addresses. (URLs don't use them,
+  so this usually isn't an issue.)
+
+
+─────────────────────────────────────────────────────
+STEP 5 — FILL IN YOUR RESOURCE DATA
+─────────────────────────────────────────────────────
+
+Replace each placeholder with your actual data. Here is the order
+of fields — they must be in EXACTLY this order, separated by commas:
+
+  1.  section        — One of: crisis, mental-health, va-benefits,
+                       healthcare, housing, employment, education,
+                       legal, state, financial, community
+  2.  title          — Short name of the resource (5 words or less)
+  3.  tag_type       — One of: urgent, federal, nonprofit, state
+  4.  description    — 2-3 sentences. If your description has a comma
+                       in it, wrap the ENTIRE description in double
+                       quotes "like this".
+  5.  phone1_label   — Label for first phone (or blank)
+  6.  phone1_number  — First phone number (or blank)
+  7.  phone2_label   — Label for second phone (or blank)
+  8.  phone2_number  — Second phone number (or blank)
+  9.  link1_label    — Text for first link button
+  10. link1_url      — Web address for first link (must start with https://)
+  11. link2_label    — Text for second link button (or blank)
+  12. link2_url      — Web address for second link (or blank)
+  13. link3_label    — Text for third link button (or blank)
+  14. link3_url      — Web address for third link (or blank)
+  15. tags           — Search keywords separated by spaces
+
+
+─────────────────────────────────────────────────────
+EXAMPLE — WHAT TO ACTUALLY TYPE
+─────────────────────────────────────────────────────
+
+Here is a complete example you could paste in (all on one line):
+
+\nemployment,Hire Heroes USA,nonprofit,"Free personalized job search help for veterans and military spouses — resume writing interview coaching and direct connections to veteran-friendly employers nationwide.",,,,,Get Free Help — Veterans,https://www.hireheroesusa.org/veterans/,Get Free Help — Military Spouses,https://www.hireheroesusa.org/military-spouses/,,,job resume interview hiring employment veteran spouse nonprofit
+
+Breaking that down so it is easier to read:
+  section:       employment
+  title:         Hire Heroes USA
+  tag_type:      nonprofit
+  description:   "Free personalized job search help for veterans and
+                 military spouses — resume writing interview coaching
+                 and direct connections to veteran-friendly employers."
+  phone1_label:  (blank)
+  phone1_number: (blank)
+  phone2_label:  (blank)
+  phone2_number: (blank)
+  link1_label:   Get Free Help — Veterans
+  link1_url:     https://www.hireheroesusa.org/veterans/
+  link2_label:   Get Free Help — Military Spouses
+  link2_url:     https://www.hireheroesusa.org/military-spouses/
+  link3_label:   (blank)
+  link3_url:     (blank)
+  tags:          job resume interview hiring employment veteran spouse nonprofit
+
+Notice the four empty fields (blank phone numbers and blank phone labels)
+show up as consecutive commas: ,,,, — four commas in a row.
+
+
+─────────────────────────────────────────────────────
+STEP 6 — SAVE THE FILE AND TEST IT
+─────────────────────────────────────────────────────
+
+Save index.html. Then open it in your browser (you can just drag the file
+into a browser window) and look for your new card.
+
+If the whole page breaks or shows nothing:
+  - Check that you didn't accidentally add a single apostrophe ( ' )
+    somewhere in your text.
+  - Make sure there are no actual line breaks in the middle of your entry —
+    it must all be one continuous line of text.
+  - Make sure the \n at the start of your entry is there and correct.
+  - Compare your commas to the example — count them.
+
+If your card shows in the wrong section:
+  - Check that the section value is spelled exactly right (lowercase,
+    with a dash if needed, like mental-health not mental health).
+
+If a link button doesn't appear:
+  - Make sure the URL starts with https:// (not http or just www.)
+
+
+─────────────────────────────────────────────────────
+ALSO UPDATE resources.csv (OPTIONAL BUT RECOMMENDED)
+─────────────────────────────────────────────────────
+
+The file "resources.csv" in the same folder is a clean, easy-to-read
+version of all the resource data. Adding your new resource there too
+keeps everything in sync, and makes it easy to import into Google Sheets
+later if needed.
+
+To do that, just open resources.csv in a text editor and add a new row
+in the same format (without the \n at the start — actual CSV files use
+real line breaks, not the escape code).
