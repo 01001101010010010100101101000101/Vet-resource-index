@@ -546,23 +546,31 @@
   }
 
   function loadSheet() {
+    // Always render the embedded fallback first so the page is never blank.
+    var fallback = csvToResources(FALLBACK_CSV);
+    renderAll(fallback);
+
     if (!SHEET_URL) {
       document.getElementById('config-notice').style.display = '';
-      renderAll(csvToResources(FALLBACK_CSV));
       return;
     }
 
+    // Then try the Google Sheet. Only replace the fallback if the sheet
+    // returns MORE resources (i.e. the owner has added their own data).
     fetch(SHEET_URL)
       .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.text();
       })
       .then(function(text) {
-        renderAll(csvToResources(text));
+        var sheetResources = csvToResources(text);
+        if (sheetResources.length > fallback.length) {
+          renderAll(sheetResources);
+        }
+        // If sheet has same or fewer rows, keep the richer fallback data.
       })
       .catch(function() {
-        // file://, offline, or CORS — use embedded fallback data
-        renderAll(csvToResources(FALLBACK_CSV));
+        // file://, offline, or CORS — fallback is already displayed.
       });
   }
 
